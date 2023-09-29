@@ -1,3 +1,4 @@
 app.bat
 RegisterUI/node_modules
 RegisterAPI/api
+RegisterAPI/db.sqlite3
