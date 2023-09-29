@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+</head>
+<style>
+    body{
+        font-family: Montserrat;
+        color: black;
+        text-align: center;
+    }
+</style>
+<body>
+    <div>
+        <body>
+                <div className='logo'>
+                <img src='https://pclight4x4.pt/wp-content/uploads/2021/03/site-lettering.png' alt=''></img>
+                </div>
+                <div className='banner'>
+                    <h1 className='title'>Relatório Manutenção</h1>
+                </div>
+        </body>
+    </div>
+    <h2>Number: {{RegisterId}}</h2>
+    <h2>Date: {{RegisterDate}} </h2>
+    {% if RegisterBackup ==1 %}
+        <h2>Backup YES</h2>
+    {% else %}
+        <h2>Backup NO</h2>
+    {% endif %}
+    <h2>Observations</h2>
+    <p>{{RegisterObservations}}</p>
+</body>
+</html>

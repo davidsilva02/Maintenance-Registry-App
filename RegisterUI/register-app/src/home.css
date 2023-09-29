@@ -1,0 +1,48 @@
+.table-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+td,th {
+    border: 1px solid #ddd;
+    text-align: center;
+    width: 200px;
+    height: auto;
+}
+td { white-space:pre }
+  
+tr:nth-child(even){background-color: #f2f2f2;}
+  
+tr:hover {background-color: #ddd;}
+  
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #ff9d00;
+    color: white;
+}
+
+button{
+    border: none;
+}
+
+.buttons-menu button{
+    border: 2px solid #ff9d00;
+    margin: 10px;
+    width: 200px;
+    background-color: white;
+    padding: 2px;
+}
+
+textarea{
+    width: 150vh;
+    height: 40vh;
+}

@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 20vh;
+    font-family: 'Montserrat';
+}
+
+.logo img {
+    max-width: 200px; /* Define a largura máxima do logotipo */
+    height: auto; /* Mantém a proporção de altura */
+    margin-top: 20px;
+    filter: grayscale(100%);
+}
+
+.banner .title {
+    color: rgb(255, 153, 0); /* Cor do texto do título */
+    margin-top: 2px;
+}
