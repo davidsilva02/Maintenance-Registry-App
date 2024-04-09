@@ -14,7 +14,7 @@ class Header extends React.Component {
                     <img src='https://pclight4x4.pt/wp-content/uploads/2021/03/site-lettering.png' alt=''></img>
                     </div>
                     <div className='banner'>
-                        <h1 className='title'>Relatório Manutenção</h1>
+                        <h1 className='title'>Manutenção</h1>
                     </div>
             </body>
         </div>

@@ -4,43 +4,31 @@ import axios from 'axios'
 import './home.css'
 
 
-
-/*
-View table of regists
-
-Options:
-- Add  register
-- Refresh registers
-
-- Edit register
-- Delete register
-- Print register
-*/
-class TableRegists extends Component{
+class TableSF extends Component{
     constructor(props) {
         super(props);
         this.state = {
-          regists: [[]],
+          SF: [[]],
         }
     }
 
     async componentWillMount() {
-        let url="http://127.0.0.1:8000/register"
+        let url="http://127.0.0.1:8000/specific-function"
         let payload = await new Promise((resolve,reject)=>{
             axios.get(url)
             .then(response=>{resolve({success:"yes",data:response['data']})})
             .catch(error=>{reject({success:"no",error:error})});
         })
 
-        this.setState({regists:payload.data})
+        this.setState({SF:payload.data})
         console.log(payload.data)
 
     }
 
     async delete(id){
         let text;
-        if (window.confirm("Deseja eliminar o registo?") === true) {
-            let url=`http://127.0.0.1:8000/register/${id}`
+        if (window.confirm("Deseja eliminar a função específica?") === true) {
+            let url=`http://127.0.0.1:8000/specific-function/${id}`
             let payload = await new Promise((resolve,reject)=>{
                 axios.delete(url)
                 .then(response=>{resolve({success:"yes",data:response['data']})})
@@ -48,33 +36,33 @@ class TableRegists extends Component{
             })
             
     
-            url="http://127.0.0.1:8000/register"
+            url="http://127.0.0.1:8000/specific-function"
             payload = await new Promise((resolve,reject)=>{
                 axios.get(url)
                 .then(response=>{resolve({success:"yes",data:response['data']})})
                 .catch(error=>{reject({success:"no",error:error})});
             })
 
-            let regists_data = payload.data
-            regists_data.map(item => {
-                item.RegisterObservations=item.RegisterObservations.replace('\n','<br>');
+            let sf_data = payload.data
+            sf_data.map(item => {
+                item.SFDescription=item.SFDescription.replace('\n','<br>');
             });
 
-            this.setState({regists:regists_data})
+            this.setState({SF:sf_data})
             console.log(payload.data)
         }
     }
 
 
     async refresh(){
-        let url="http://127.0.0.1:8000/register"
+        let url="http://127.0.0.1:8000/specific-function"
         let payload = await new Promise((resolve,reject)=>{
             axios.get(url)
             .then(response=>{resolve({success:"yes",data:response['data']})})
             .catch(error=>{reject({success:"no",error:error})});
         })
 
-        this.setState({regists:payload.data})
+        this.setState({SF:payload.data})
         console.log(payload.data)
     }
 
@@ -82,7 +70,7 @@ class TableRegists extends Component{
         return<>
 
         <div className='buttons-menu'>
-        <button><a href='/add-registo'>Adicionar Registo</a></button>
+        <button><a href='/add-specific-function'>Adicionar uma função específica</a></button>
         <button onClick={()=>this.refresh()}>Refresh</button>
         </div>
 
@@ -90,25 +78,22 @@ class TableRegists extends Component{
             <table>
                 <tr>
                     <th>ID</th>
-                    <th>Data</th>
-                    <th>Backup?</th>
-                    <th>Observações</th>
+                    <th>Title</th>
+                    <th>Descrição</th>
                     <th>Editar</th>
                     <th>Delete</th>
                     <th>Imprimir</th>
 
                 </tr>
                 {
-                    this.state.regists.map(item=>(
+                    this.state.SF.map(item=>(
                         <tr>
-                            <td>{item.RegisterId}</td>
-                            <td>{item.RegisterDate}</td>
-                            {!item.RegisterBackup && <td>❌</td>}
-                            {item.RegisterBackup && <td>✅</td>}
-                            <td>{item.RegisterObservations}</td>
-                            <td><button onClick={() => window.location.href=`/edit-registo/${item.RegisterId}`}>✏️</button></td>
-                            <td><button onClick={() => this.delete(item.RegisterId)}>❌</button></td>
-                            <td><button onClick={() => {window.open(`http://127.0.0.1:8000/register/print/${item.RegisterId}`,'_blank')}}>🖨️</button></td>
+                            <td>{item.SFId}</td>
+                            <td>{item.SFTitle}</td>
+                            <td className='description'>{item.SFDescription}</td>
+                            <td><button onClick={() => window.location.href=`/edit-specific-function/${item.SFId}`}>✏️</button></td>
+                            <td><button onClick={() => this.delete(item.SFId)}>❌</button></td>
+                            <td><button onClick={() => {window.open(`http://127.0.0.1:8000/specific-function/print/${item.SFId}`,'_blank')}}>🖨️</button></td>
                         </tr>
                     ))
                 }
@@ -118,25 +103,13 @@ class TableRegists extends Component{
     }
 }
 
-
-class AdictionalButtons extends Component{
-    render(){
-        return<>
-         <div className='buttons-menu'>
-            <button><a href='/specific-function'>Specific Functions</a></button>
-        </div>
-        </>
-    }
-}
-
-class Home extends React.Component {
+class SpecificFunctions extends React.Component {
     render(){
         return<>
         <Header/>
-        <AdictionalButtons/>
-        <TableRegists/>
+        <TableSF/>
         </>
     }
 }
 
-export default Home;
+export default SpecificFunctions;

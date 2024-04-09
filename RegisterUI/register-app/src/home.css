@@ -17,6 +17,13 @@ td,th {
     height: auto;
 }
 td { white-space:pre }
+
+.table-content .description td{
+    white-space: nowrap; /* Evita que o texto quebre em várias linhas */
+    overflow: hidden; /* Oculta qualquer texto que exceda a largura do elemento pai */
+    text-overflow: ellipsis; /* Adiciona reticências (...) para indicar que o texto foi cortado */
+    max-width: 150px; /* Defina a largura máxima para o texto */
+}
   
 tr:nth-child(even){background-color: #f2f2f2;}
   
@@ -45,4 +52,9 @@ button{
 textarea{
     width: 150vh;
     height: 40vh;
+}
+
+input{
+    width: 150vh;
+    height: 5vh;
 }
