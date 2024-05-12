@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "create-react-app": "^1.2.1",
-    "tar": "^6.2.0",
+    "tar": "^6.2.1",
     "tar-pack": "^3.4.1"
   }
 }
