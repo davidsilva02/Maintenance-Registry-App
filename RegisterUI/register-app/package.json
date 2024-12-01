@@ -14,7 +14,7 @@
     "@svgr/plugin-svgo": "^8.1.0",
     "@svgr/webpack": "^8.1.0",
     "ansi-html": "^0.0.9",
-    "axios": "^1.6.4",
+    "axios": "^1.6.8",
     "browserslist": "^4.22.2",
     "css-select": "^5.1.0",
     "glob-parent": "^6.0.2",
